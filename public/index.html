@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Push Notification Form</title>
+</head>
+<body>
+  <h1>Set a Reminder</h1>
+  <form id="reminderForm">
+    <label for="time">Time:</label>
+    <input type="time" id="time" name="time" required><br><br>
+
+    <label for="type">Type:</label>
+    <select id="type" name="type">
+      <option value="Meal">Meal</option>
+      <option value="Medicine">Medicine</option>
+    </select><br><br>
+
+    <label for="notes">Additional Notes:</label>
+    <textarea id="notes" name="notes" required></textarea><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    // Your VAPID public key
+    const publicVapidKey = 'BG9S6nJaNcpdZ2H2ViKCn_yf5xG27A5skDkJ8yg3h38KUWO6JK5MFXxdSuLyrf9rb-x-msv3BIm11t9na2iTAos';
+
+    // Check if Service Worker is available in the browser
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')  // Register the service worker
+        .then(registration => {
+          console.log('Service Worker registered.');
+
+          // Listen for form submit to send reminder data
+          document.getElementById('reminderForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Subscribe to push notifications
+            const subscription = await registration.pushManager.subscribe({
+              userVisibleOnly: true,  // We want to display notifications to the user
+              applicationServerKey: publicVapidKey  // Your VAPID public key
+            });
+
+            // Get the form data
+            const formData = {
+              time: document.getElementById('time').value,
+              type: document.getElementById('type').value,
+              notes: document.getElementById('notes').value,
+              subscription: subscription,  // Include the push subscription object
+            };
+
+            // Send the form data to the backend (server)
+            fetch('/submit', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(formData),  // Send form data as JSON
+            })
+            .then(response => response.text())  // Receive server response
+            .then(data => {
+              alert(data);  // Show alert with the response from the server
+            })
+            .catch(error => {
+              console.error('Error submitting form data:', error);
+            });
+          });
+        })
+        .catch(err => {
+          console.error('Service Worker registration failed:', err);
+        });
+    } else {
+      console.warn('Service Workers are not supported in this browser.');
+    }
+  </script>
+  
+</body>
+</html>
