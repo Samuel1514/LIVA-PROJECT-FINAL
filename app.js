@@ -49,9 +49,8 @@ webPush.setVapidDetails(
 
 // Route to serve the homepage
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'templates', 'index.html'));
+  res.sendFile(path.join(__dirname, 'templates', 'product.html'));
 });
-
 // Route to save form data and subscription
 app.post('/submit', async (req, res) => {
   const { time, type, notes, subscription } = req.body;
