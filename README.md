@@ -34,25 +34,45 @@ Before setting up the project, ensure you have the following installed:
 
 Activate the virtual environment:
 On macOS/Linux:
+
 source venv/bin/activate
+
 On Windows:
+
 .\venv\Scripts\activate
+
 Install required Python packages: After activating the virtual environment, install the necessary dependencies by running the following commands:
+
 pip install flask flask-cors google-generativeai requests
+
 Freeze the installed dependencies: Generate a requirements.txt file for future use:
+
 pip freeze > requirements.txt
+
 Set the Flask app environment variable:
+
 On macOS/Linux:
+
 export FLASK_APP=app.py
+
 On Windows:
+
 set FLASK_APP=app.py
+
 Run the Flask application: Start the Flask application to begin the avatar interaction and caregiving system:
+
 python app.py
+
 For MongoDB database: If you are using a Node.js application for the database, make sure you have MongoDB set up, and install Node.js dependencies:
+
 npm install
+
 Then, run the Node.js server:
 
 node app.js
+
 Additional Required Packages for Node.js:
+
 Install required Node.js packages (if using Node.js for database or MongoDB operations):
+
 npm install mongodb express
