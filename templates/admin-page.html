@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Admin Features</h2>
+            <ul>
+                <li onclick="showAdminFeature('dashboard')">Dashboard</li>
+                <li onclick="showAdminFeature('mealMedicine')">Meal & Medicine Management</li>
+                <li onclick="showAdminFeature('communicationHub')">Communication Hub</li>
+                <li onclick="showAdminFeature('healthInsights')">Health Insights</li>
+                <li onclick="showAdminFeature('notifications')">Notifications</li>
+                <li onclick="showAdminFeature('emergencyActions')">Emergency Actions</li>
+                <li onclick="showAdminFeature('communitySupport')">Community Support</li>
+                <li onclick="showAdminFeature('feedback')">Feedback & Suggestions</li>
+                <li onclick="showAdminFeature('profileManagement')">User Profile Management</li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h2 id="adminFeatureTitle">Welcome Admin</h2>
+            <div id="adminFeatureDescription">
+                <p>Select a feature from the left to explore its details and manage your elderly parent's activities.</p>
+            </div>
+        </main>
+    </div>
+    <script src="admin.js"></script>
+</body>
+</html>

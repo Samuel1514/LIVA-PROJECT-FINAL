@@ -10,7 +10,7 @@ const port = 3000;
 // Middleware setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'templates')));
 
 // MongoDB connection
 const mongoURI = 'mongodb+srv://abhinayk9393:Abhinay%237@cluster0.7hs27.mongodb.net/formDB?retryWrites=true&w=majority';
@@ -49,7 +49,7 @@ webPush.setVapidDetails(
 
 // Route to serve the homepage
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'templates', 'index.html'));
 });
 
 // Route to save form data and subscription
@@ -67,6 +67,41 @@ app.post('/submit', async (req, res) => {
   } catch (error) {
     console.error('Error saving form data:', error);
     res.status(500).send('Error saving form data.');
+  }
+});
+
+
+// Route to get form data (for testing or front-end integration)
+app.get('/reminders', async (req, res) => {
+  try {
+    const reminders = await Form.find();
+    res.status(200).json(reminders);
+  } catch (error) {
+    console.error('Error fetching reminders:', error);
+    res.status(500).send('Error fetching reminders.');
+  }
+});
+
+// Route to handle subscription data (web push)
+app.post('/subscribe', async (req, res) => {
+  const { subscription } = req.body;
+  if (!subscription || !subscription.endpoint) {
+    return res.status(400).send('Invalid subscription object.');
+  }
+
+  try {
+    const existingSubscription = await Form.findOne({ 'subscription.endpoint': subscription.endpoint });
+
+    if (!existingSubscription) {
+      const formData = new Form({ subscription });
+      await formData.save();
+      res.status(201).send('Subscription saved successfully!');
+    } else {
+      res.status(200).send('Already subscribed');
+    }
+  } catch (error) {
+    console.error('Error saving subscription:', error);
+    res.status(500).send('Error saving subscription.');
   }
 });
 

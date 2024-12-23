@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>User Login</title>
+</head>
+<body>
+    <div class="login-container">
+        <h2>User Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+            </div>
+            <button type="submit" class="login-button">Login</button>
+            <div class="social-login">
+                <button type="button" class="google-button">
+                    <img src="https://i.pcmag.com/imagery/articles/03yViRKjAZOI19dp370ytsj-3..v1569489600.jpg" 
+                        alt="Google Logo" style="width:40px; height:35px; margin-right:5px;">
+                    Login with Google
+                </button>
+                <button type="button" class="facebook-button">
+                    <i class="fab fa-facebook-f"></i> Login with Facebook
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBxJlS35LSOe0h_v6Hzj4cOXhMAjRpr7oQ",
+            authDomain: "login-liva-9266e.firebaseapp.com",
+            projectId: "login-liva-9266e",
+            storageBucket: "login-liva-9266e.appspot.com",
+            messagingSenderId: "756068659500",
+            appId: "1:756068659500:web:48e861a6c249ba95083c89"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+
+        // Google Login
+        const googleProvider = new GoogleAuthProvider();
+        document.querySelector('.google-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            signInWithPopup(auth, googleProvider)
+                .then((result) => {
+                    
+                    window.location.href = 'product.html'; // Redirect to product.html
+                })
+                .catch((error) => {
+                    console.error('Google Login Failed:', error.message);
+                });
+        });
+
+        // Facebook Login
+        const facebookProvider = new FacebookAuthProvider();
+        document.querySelector('.facebook-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            signInWithPopup(auth, facebookProvider)
+                .then((result) => {
+                    
+                    window.location.href = 'product.html'; // Redirect to product.html
+                })
+                .catch((error) => {
+                    console.error('Facebook Login Failed:', error.message);
+                });
+        });
+    </script>
+</body>
+</html>

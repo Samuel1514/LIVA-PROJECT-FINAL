@@ -1,0 +1,762 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 1rem;
+}
+
+/* Logo */
+.logo {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Center and Space Menu Items */
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Adjust spacing between menu items */
+    flex-grow: 1; /* Allow menu to take up remaining space */
+    margin: 0;
+}
+
+/* Menu Item Styling */
+.menu li {
+    margin: 0;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.menu a:hover {
+    color: #ddd;
+}
+
+/* Toggle Button Styling */
+.toggle-button {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.toggle-button span {
+    height: 3px;
+    width: 25px;
+    background: #fff;
+    margin: 4px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .menu {
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        width: 60%;
+        background-color: #333;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+    }
+
+    .menu li {
+        margin: 20px 0;
+    }
+
+    .menu.open {
+        transform: translateX(0);
+    }
+
+    .toggle-button {
+        display: flex;
+    }
+}
+
+
+
+
+
+/* Hero Section Styling */
+.hero {
+    
+    background-image: url('https://plus.unsplash.com/premium_photo-1665203598344-f5129341013f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZWxkZXJseSUyMHBob25lfGVufDB8fDB8fHww');
+    background-size: cover;
+    background-position: center;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+text-align: center;
+color: #ffffff;
+}
+
+.hero-content h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 24px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ffffff;
+    color: #333;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #eeeeee
+    ;
+}
+
+
+
+
+
+
+
+.products {
+    padding: 2rem 1rem; /* Adds padding to the section */
+    text-align: center; /* Centers text */
+    background-color: #f9f9f9; /* Light background color */
+}
+
+.products h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem; /* Size of the section title */
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four columns */
+    gap: 1.5rem; /* Space between items */
+}
+
+.product-item {
+    background-color: #fff; /* White background for each product */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 1rem; /* Padding inside product item */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.product-item img {
+    width: 100%; /* Full width image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Rounded corners for images */
+}
+
+.price {
+    font-size: 1.2rem; /* Size of the price text */
+    color: #ff6347; /* Price color */
+    margin-top: 0.5rem; /* Space above the price */
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .product-grid {
+        grid-template-columns: 1fr; /* One column on small screens */
+    }
+}
+
+
+
+
+
+
+
+/* CSS for Secondary Banner */
+.secondary-banner {
+    background-image: url('https://images.unsplash.com/photo-1513159446162-54eb8bdaa79b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.secondary-banner .banner-content h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0 20px;
+    background: rgba(0, 0, 0, 0.5); /* Adds a subtle background to tagline for better readability */
+    border-radius: 5px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .secondary-banner {
+        height: 200px;
+    }
+    .secondary-banner .banner-content h2 {
+        font-size: 1.5rem;
+    }
+}
+
+
+
+
+/* Footer Styles */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-links a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.footer-links a:hover {
+    color: #ff9800;
+}
+
+.footer-social a {
+    margin: 0 5px;
+    transition: transform 0.3s ease;
+}
+
+.footer-social a:hover {
+    transform: scale(1.2);
+}
+
+.footer-bottom {
+    font-size: 0.9rem;
+    margin-top: 20px;
+    color: #ccc;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+    } }
+
+
+
+/* Search Bar Styling */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto;
+    width: 80%;
+}
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    width: 60%;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #555;
+}
+
+/* Updated Product Grid Styling */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+
+
+/* Search Bar Styling */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto;
+    width: 80%;
+}
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    width: 60%;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #555;
+}
+
+/* Updated Product Grid Styling */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+
+/* Services Dropdown Menu */
+.services-menu {
+    position: relative;
+}
+
+.services-menu .dropdown {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%; /* Position dropdown below the menu item */
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    padding: 0.5rem;
+}
+
+.services-menu:hover .dropdown {
+    display: block; /* Show dropdown on hover */
+}
+
+.services-menu .dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.services-menu .dropdown ul li {
+    padding: 0.5rem 1rem;
+}
+
+.services-menu .dropdown ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+
+
+/* Style for the product grid */
+.products {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-item {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-item:hover {
+    transform: scale(1.05);
+}
+
+.product-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-item h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.price {
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Responsive Grid */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Login Dropdown Styling */
+.dropdown {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    list-style: none;
+    padding: 0.5rem 0;
+    min-width: 150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.dropdown li {
+    padding: 0.5rem 1rem;
+}
+
+.dropdown li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.dropdown li a:hover {
+    background-color: #444;
+}
+
+/* Ensure proper positioning */
+.services-menu {
+    position: relative;
+}
+
+/* Login Dropdown Styling */
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    list-style: none;
+    padding: 0.5rem 0;
+    min-width: 150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.dropdown-menu li {
+    padding: 0.5rem 1rem;
+}
+
+.dropdown-menu li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #444;
+}
+
+/* Ensure proper positioning */
+.services-menu {
+    position: relative;
+}
+
+
+
+.products {
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background for contrast */
+}
+
+.products h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px; /* Space between items */
+}
+
+.product-item {
+    background-color: #fff; /* White background for each item */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    text-align: center; /* Centered text */
+    padding: 10px; /* Padding around content */
+}
+
+.product-item img {
+    max-width: 100%; /* Responsive image */
+    border-radius: 8px 8px 0 0; /* Rounded top corners */
+}
+
+.product-item h3 {
+    margin: 10px 0 5px; /* Spacing for title */
+}
+
+.product-item p {
+    color: #666; /* Darker text for description */
+    font-size: 0.9em; /* Slightly smaller font */
+}
+
+
+
+
+/* Navbar Contact Dropdown */
+.contact-menu {
+    position: relative;
+}
+
+.contact-menu .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    width: 200px;
+}
+
+.contact-menu:hover .dropdown-menu {
+    display: block;
+}
+
+.contact-menu .dropdown-menu li {
+    padding: 5px 10px;
+    color: #333;
+}
+
+
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Product Grid Styling */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns per row */
+    gap: 20px; /* Space between product items */
+    padding: 20px;
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.product-item img {
+    width: 100%; /* Full width of the product item */
+    max-height: 150px; /* Constrain height */
+    object-fit: cover; /* Crop image to fit without distortion */
+    border-radius: 4px; /* Optional: rounded corners */
+}
+
+.product-item h3 {
+    font-size: 1.2em;
+    margin: 15px 0 10px;
+    color: #333;
+}
+
+.product-item p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns per row for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr; /* 1 column per row for very small screens */
+    }
+}
+
+
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.menu li a:hover {
+    color: #ddd;
+}
+
+/* Dropdown menu styles */
+.dropdown-menu {
+    display: none; /* Hide by default */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #444;
+    padding: 10px 0;
+    list-style: none;
+    min-width: 150px;
+    border-radius: 4px;
+}
+
+.dropdown-menu li {
+    padding: 5px 15px;
+}
+
+.dropdown-menu li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.dropdown-menu li:hover {
+    background-color: #555;
+}
+
+/* Show dropdown on hover */
+.services-menu:hover .dropdown-menu,
+.contact-menu:hover .dropdown-menu {
+    display: block;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+.cta-button:hover {
+    background-color: #ccc;
+    color: #000;
+}
+
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    list-style: none;
+    border-radius: 5px;
+}
+
+.contact-menu:hover .dropdown-menu,
+.services-menu:hover .dropdown-menu {
+    display: block;
+}
+
+
+.language-menu select {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.language-menu select:hover {
+    background-color: #444;
+}
